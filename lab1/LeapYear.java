@@ -10,7 +10,7 @@ public class LeapYear {
 	 private static boolean isLeapYear(int year){
         return (year %400 == 0 || (year %4 == 0 && year %100 != 0));
 		// do not need to use if
-		// test2
+		// test3
     }
 	 
     private static void checkLeapYear(int year) {
