@@ -31,12 +31,8 @@ public class ArrayDeque<Item> {
         private int count;
         public DequeIterator() {
             // todo change the wizPos
-            if ( !MoveFirst ){
-                // which means there is first thing
-                wizPos = 5;
-            }else{
-                wizPos = nextFirst + 1;
-            }
+                wizPos = plusOne(nextFirst);
+
         }
         public boolean hasNext() { return count < size; }
         public Item next() {
@@ -127,9 +123,8 @@ public class ArrayDeque<Item> {
         Item x;
         int index;
         if ( !MoveFirst ){
-            index = 4;
-            nextFirst = plusOne(nextFirst);
-            nextLast = index;
+            index = plusOne(nextFirst);
+            nextFirst = index;
         }else{
             index = plusOne(nextFirst);
             nextFirst = index;
@@ -170,7 +165,7 @@ public class ArrayDeque<Item> {
         ArrayDeque<String> aList = new ArrayDeque();
         aList.addLast("a");
         aList.addLast("b");
-        //aList.addLast("c");
+        aList.addLast("c");
         aList.addFirst("d");
         aList.addLast("e");
         aList.addLast("f");
