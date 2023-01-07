@@ -109,8 +109,8 @@ public class ArrayDeque<Item> {
             nextLast = minusOne(nextLast);
             nextFirst = index;
         }else{
-            index = plusOne(nextFirst);
-            nextFirst = plusOne(nextFirst);
+            index = minusOne(nextLast);
+            nextLast = index;
         }
         x = items[index];
         items[index] = null;
@@ -131,8 +131,8 @@ public class ArrayDeque<Item> {
             nextFirst = plusOne(nextFirst);
             nextLast = index;
         }else{
-            index = nextLast - 1;
-            nextLast = minusOne(nextLast);
+            index = plusOne(nextFirst);
+            nextFirst = index;
         }
         x = items[index];
         items[index] = null;
@@ -172,9 +172,9 @@ public class ArrayDeque<Item> {
         aList.addLast("b");
         //aList.addLast("c");
         aList.addFirst("d");
-        //aList.addLast("e");
-        //aList.addLast("f");
-        //aList.addLast("g");
+        aList.addLast("e");
+        aList.addLast("f");
+        aList.addLast("g");
 
 
         aList.printDeque();
