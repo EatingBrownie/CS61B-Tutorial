@@ -10,8 +10,6 @@ public class ArrayDeque<Item> {
     // if use "addFirst", this is the index
     private int nextLast;
     // if use "addLast", this is the index
-    private boolean MoveFirst = false;
-    // use to find if addFirst() is used
     private boolean MoveLast = false;
     // use t find if addLast() is used
 
@@ -64,7 +62,6 @@ public class ArrayDeque<Item> {
         items[nextFirst] = x;
         size += 1;
         nextFirst = minusOne(nextFirst);
-        MoveFirst = true;
     }
 
     /** Resize the underlying array to the target capacity. */
@@ -100,14 +97,10 @@ public class ArrayDeque<Item> {
     public Item removeLast() {
         Item x;
         int index;
-        if ( !MoveLast ){
-            index = 5;
-            nextLast = minusOne(nextLast);
-            nextFirst = index;
-        }else{
-            index = minusOne(nextLast);
-            nextLast = index;
-        }
+
+        index = minusOne(nextLast);
+        nextLast = index;
+
         x = items[index];
         items[index] = null;
         size -= 1;
@@ -122,13 +115,9 @@ public class ArrayDeque<Item> {
         //
         Item x;
         int index;
-        if ( !MoveFirst ){
-            index = plusOne(nextFirst);
-            nextFirst = index;
-        }else{
-            index = plusOne(nextFirst);
-            nextFirst = index;
-        }
+        index = plusOne(nextFirst);
+        nextFirst = index;
+
         x = items[index];
         items[index] = null;
         size -= 1;
@@ -177,8 +166,10 @@ public class ArrayDeque<Item> {
         System.out.println("remove the first one: " + aList.removeFirst());
         System.out.println("remove the first one: " + aList.removeFirst());
         System.out.println("remove the first one: " + aList.removeFirst());
+        System.out.println("remove the last one: " + aList.removeLast());
 
         System.out.println("the 0th item: " + aList.get(0));
+        System.out.println("the 1st item: " + aList.get(1));
         System.out.println("the last one: " + aList.getLast());
         aList.printDeque();
 
