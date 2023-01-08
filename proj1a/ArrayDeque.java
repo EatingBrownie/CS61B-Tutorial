@@ -38,6 +38,16 @@ public class ArrayDeque<Item> {
         }
     }
 
+    /** Insert X into the front of the list.*/
+    public void addFirst(Item x){
+        if (size == items.length){
+            resize(size * 2);
+        }
+        items[nextFirst] = x;
+        size += 1;
+        nextFirst = minusOne(nextFirst);
+        usage = (double) (size) / items.length;
+    }
 
     /** Inserts X into the back of the list. */
     public void addLast(Item x) {
@@ -51,16 +61,71 @@ public class ArrayDeque<Item> {
 
     }
 
-    /** Insert X into the front of the list.*/
-    public void addFirst(Item x){
-        if (size == items.length){
-            resize(size * 2);
-        }
-        items[nextFirst] = x;
-        size += 1;
-        nextFirst = minusOne(nextFirst);
-        usage = (double) (size) / items.length;
+    /** use to check if it is empty*/
+    public boolean isEmpty(){
+        return (size == 0);
     }
+
+    /** Returns the number of items in the list. */
+    public int size() {
+        return size;
+    }
+
+    public void printDeque(){
+        DequeIterator dequeIterator = new DequeIterator();
+        while(dequeIterator.hasNext()){
+            System.out.print(dequeIterator.next() + " ");
+        }
+        System.out.println();
+    }
+
+    /** Deletes item from front of the list and
+     * returns deleted item. */
+    public Item removeFirst() {
+        // removeFirst, if we have already addFirst
+        Item x;
+        int index;
+
+        if (needResize()){
+            resize(items.length / 2);
+        }
+        index = plusOne(nextFirst);
+        size -= 1;
+        nextFirst = index;
+        x = items[index];
+        items[index] = null;
+        return x;
+    }
+
+
+    /** Deletes item from back of the list and
+     * returns deleted item. */
+    public Item removeLast() {
+        Item x;
+        int index;
+
+        if (needResize()){
+            resize(items.length / 2);
+        }
+        index = minusOne(nextLast);
+        nextLast = index;
+        size -= 1;
+        x = items[index];
+        items[index] = null;
+        return x;
+
+    }
+
+    /** Gets the ith item in the list (0 is the front). */
+    public Item get(int i) {
+        DequeIterator dequeIterator = new DequeIterator();
+        Item x = null;
+        for (int j = 0; j <= i; j++) {
+            x = dequeIterator.next();
+        }
+        return x;
+    }
+
 
     /** Resize the underlying array to the target capacity. */
     private void resize(int capacity) {
@@ -90,66 +155,6 @@ public class ArrayDeque<Item> {
         return items[ minusOne(nextLast) ];
     }
 
-    /** Gets the ith item in the list (0 is the front). */
-    public Item get(int i) {
-        DequeIterator dequeIterator = new DequeIterator();
-        Item x = null;
-        for (int j = 0; j <= i; j++) {
-            x = dequeIterator.next();
-        }
-        return x;
-    }
-
-    /** Returns the number of items in the list. */
-    public int size() {
-        return size;
-    }
-
-    /** Deletes item from back of the list and
-     * returns deleted item. */
-    public Item removeLast() {
-        Item x;
-        int index;
-
-        if (needResize()){
-            resize(items.length / 2);
-        }
-        index = minusOne(nextLast);
-        nextLast = index;
-        size -= 1;
-        x = items[index];
-        items[index] = null;
-        return x;
-
-    }
-
-    /** Deletes item from front of the list and
-     * returns deleted item. */
-    public Item removeFirst() {
-        // removeFirst, if we have already addFirst
-        Item x;
-        int index;
-
-        if (needResize()){
-            resize(items.length / 2);
-        }
-        index = plusOne(nextFirst);
-        size -= 1;
-        nextFirst = index;
-        x = items[index];
-        items[index] = null;
-        return x;
-    }
-
-
-
-    public void printDeque(){
-        DequeIterator dequeIterator = new DequeIterator();
-        while(dequeIterator.hasNext()){
-            System.out.print(dequeIterator.next() + " ");
-        }
-        System.out.println();
-    }
 
     /** Use for nextFirst*/
     int minusOne(int index){
@@ -167,10 +172,6 @@ public class ArrayDeque<Item> {
         return index + 1;
     }
 
-    /** use to check if it is empty*/
-    public boolean isEmpty(){
-        return (size == 0);
-    }
 
     public static void main(String[] args) {
         ArrayDeque<String> aList = new ArrayDeque();
