@@ -101,12 +101,25 @@ public class IntList {
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
     public static IntList catenate(IntList A, IntList B) {
-        IntList L = new IntList();
-        IntList p = L;
+        // first use iteration
+        IntList ret;
         if (A == null){
-            L = B;
+            ret = B;
+        }else{
+            ret = new IntList(A.first,null);
+            IntList pRet = ret;
+            // a pointer for the return List
+            IntList pA = A;
+            // a pointer to loop A
+
+            while (pA.rest != null){
+                pRet.rest = new IntList(pA.rest.first,null);
+                pA = pA.rest;
+                pRet = pRet.rest;
+            }
+            pRet.rest = B;
         }
-        return L;
+        return ret;
     }
 
 
