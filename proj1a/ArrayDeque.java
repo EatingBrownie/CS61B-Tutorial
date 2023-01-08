@@ -11,9 +11,7 @@ public class ArrayDeque<Item> {
     private int nextLast;
     // if use "addLast", this is the index
     private double usage;
-
-
-
+    
     private static final double USAGE_FACTOR = 0.25;
 
 
