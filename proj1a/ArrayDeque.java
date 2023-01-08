@@ -10,6 +10,8 @@ public class ArrayDeque<Item> {
     // if use "addFirst", this is the index
     private int nextLast;
     // if use "addLast", this is the index
+    private double usage;
+
 
 
     private static final double USAGE_FACTOR = 0.25;
@@ -75,6 +77,12 @@ public class ArrayDeque<Item> {
         items = a;
     }
 
+    public boolean needResize(){
+        // here, size should be renew (i.e. size - 1)
+        usage = (double) (size) / items.length;
+        return (usage < USAGE_FACTOR && items.length >= 16);
+    }
+
 
     /** Returns the item from the back of the list. */
     public Item getLast() {
@@ -102,12 +110,16 @@ public class ArrayDeque<Item> {
         Item x;
         int index;
 
+        if (needResize()){
+            resize(items.length / 2);
+        }
+        size -= 1;
         index = minusOne(nextLast);
         nextLast = index;
 
         x = items[index];
         items[index] = null;
-        size -= 1;
+
         return x;
 
     }
@@ -119,12 +131,15 @@ public class ArrayDeque<Item> {
         //
         Item x;
         int index;
+
+        if (needResize()){
+            resize(items.length / 2);
+        }
         index = plusOne(nextFirst);
         nextFirst = index;
-
+        size -= 1;
         x = items[index];
         items[index] = null;
-        size -= 1;
         return x;
     }
 
@@ -165,10 +180,21 @@ public class ArrayDeque<Item> {
         aList.addLast("g");
         aList.addLast("h");
         aList.addLast("i");
-
-
+        for (int i = 0; i < 20; i++) {
+            aList.addLast("j" + i);
+        }
+        System.out.println("----------insert completely-----------");
         aList.printDeque();
-        System.out.println("size = " + aList.size);
+        System.out.println("size = " + aList.size());
+
+
+
+        for (int i = 0; i < 29; i++) {
+            aList.removeFirst();
+        }
+        System.out.println("----------remove  completely-----------");
+        aList.printDeque();
+        System.out.println("size = " + aList.size());
 
 /*
         System.out.println("remove the first one: " + aList.removeFirst());
