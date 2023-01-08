@@ -11,7 +11,7 @@ public class ArrayDeque<Item> {
     private int nextLast;
     // if use "addLast", this is the index
     private double usage;
-    
+
     private static final double USAGE_FACTOR = 0.25;
 
 
@@ -167,6 +167,11 @@ public class ArrayDeque<Item> {
         return index + 1;
     }
 
+    /** use to check if it is empty*/
+    public boolean isEmpty(){
+        return (size == 0);
+    }
+
     public static void main(String[] args) {
         ArrayDeque<String> aList = new ArrayDeque();
         aList.addLast("a");
@@ -184,7 +189,7 @@ public class ArrayDeque<Item> {
         System.out.println("----------insert completely-----------");
         aList.printDeque();
         System.out.println("size = " + aList.size());
-
+        System.out.println("aList.isEmpty() = " + aList.isEmpty());
 
 
         for (int i = 0; i < 29; i++) {
@@ -193,6 +198,7 @@ public class ArrayDeque<Item> {
         System.out.println("----------remove  completely-----------");
         aList.printDeque();
         System.out.println("size = " + aList.size());
+        System.out.println("aList.isEmpty() = " + aList.isEmpty());
 
 
         System.out.println("----------continue to insert--------------");
@@ -204,6 +210,8 @@ public class ArrayDeque<Item> {
         System.out.println("the 1st item: " + aList.get(1));
         System.out.println("the last one: " + aList.getLast());
         aList.printDeque();
+        System.out.println("aList.isEmpty() = " + aList.isEmpty());
+
 
     }
 
