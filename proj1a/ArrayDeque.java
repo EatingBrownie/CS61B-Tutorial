@@ -199,6 +199,7 @@ public class ArrayDeque<Item> {
         aList.printDeque();
         System.out.println("size = " + aList.size());
         System.out.println("aList.isEmpty() = " + aList.isEmpty());
+        System.out.println("the 1st item: " + aList.get(1));
 
 
         System.out.println("----------continue to insert--------------");
