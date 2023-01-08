@@ -10,8 +10,7 @@ public class ArrayDeque<Item> {
     // if use "addFirst", this is the index
     private int nextLast;
     // if use "addLast", this is the index
-    private boolean MoveLast = false;
-    // use t find if addLast() is used
+
 
     private static final double USAGE_FACTOR = 0.25;
 
@@ -28,9 +27,7 @@ public class ArrayDeque<Item> {
         private int wizPos;
         private int count;
         public DequeIterator() {
-            // todo change the wizPos
                 wizPos = plusOne(nextFirst);
-
         }
         public boolean hasNext() { return count < size; }
         public Item next() {
