@@ -49,6 +49,8 @@ public class ArrayDeque<Item> {
         items[nextLast] = x;
         size += 1;
         nextLast = plusOne(nextLast);
+        usage = (double) (size) / items.length;
+
     }
 
     /** Insert X into the front of the list.*/
@@ -59,6 +61,7 @@ public class ArrayDeque<Item> {
         items[nextFirst] = x;
         size += 1;
         nextFirst = minusOne(nextFirst);
+        usage = (double) (size) / items.length;
     }
 
     /** Resize the underlying array to the target capacity. */
@@ -113,13 +116,11 @@ public class ArrayDeque<Item> {
         if (needResize()){
             resize(items.length / 2);
         }
-        size -= 1;
         index = minusOne(nextLast);
         nextLast = index;
-
+        size -= 1;
         x = items[index];
         items[index] = null;
-
         return x;
 
     }
@@ -128,7 +129,6 @@ public class ArrayDeque<Item> {
      * returns deleted item. */
     public Item removeFirst() {
         // removeFirst, if we have already addFirst
-        //
         Item x;
         int index;
 
@@ -136,8 +136,8 @@ public class ArrayDeque<Item> {
             resize(items.length / 2);
         }
         index = plusOne(nextFirst);
-        nextFirst = index;
         size -= 1;
+        nextFirst = index;
         x = items[index];
         items[index] = null;
         return x;
@@ -190,18 +190,17 @@ public class ArrayDeque<Item> {
 
 
         for (int i = 0; i < 29; i++) {
-            aList.removeFirst();
+            aList.removeLast();
         }
         System.out.println("----------remove  completely-----------");
         aList.printDeque();
         System.out.println("size = " + aList.size());
 
-/*
-        System.out.println("remove the first one: " + aList.removeFirst());
-        System.out.println("remove the first one: " + aList.removeFirst());
-        System.out.println("remove the first one: " + aList.removeFirst());
-        System.out.println("remove the last one: " + aList.removeLast());
-*/
+
+        System.out.println("----------continue to insert--------------");
+        for (int i = 0; i < 9; i++) {
+            aList.addLast("j" + i);
+        }
 
         System.out.println("the 0th item: " + aList.get(0));
         System.out.println("the 1st item: " + aList.get(1));
