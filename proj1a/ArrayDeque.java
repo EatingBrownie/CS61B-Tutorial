@@ -41,10 +41,8 @@ public class ArrayDeque<Item> {
 
     /** Inserts X into the back of the list. */
     public void addLast(Item x) {
-        // we use addLast to insert into the specific position
-        // and renew the nextLast
         if (size == items.length){
-            resize(size + 1);
+            resize(size * 2);
         }
         items[nextLast] = x;
         size += 1;
@@ -54,7 +52,7 @@ public class ArrayDeque<Item> {
     /** Insert X into the front of the list.*/
     public void addFirst(Item x){
         if (size == items.length){
-            resize(size + 1);
+            resize(size * 2);
         }
         items[nextFirst] = x;
         size += 1;
@@ -63,8 +61,17 @@ public class ArrayDeque<Item> {
 
     /** Resize the underlying array to the target capacity. */
     private void resize(int capacity) {
+        // whether longer or shorter, judge from outside
+        // then renew nextFirst and nextLast
         Item[] a = (Item[]) new Object[capacity];
-        System.arraycopy(items, 0, a, 0, size);
+        int temp = 0;
+        DequeIterator dequeIterator = new DequeIterator();
+        while(dequeIterator.hasNext()){
+            a[temp] = dequeIterator.next();
+            temp += 1;
+        }
+        nextFirst = capacity - 1;
+        nextLast = size;
         items = a;
     }
 
@@ -156,14 +163,19 @@ public class ArrayDeque<Item> {
         aList.addLast("e");
         aList.addLast("f");
         aList.addLast("g");
+        aList.addLast("h");
+        aList.addLast("i");
 
 
         aList.printDeque();
+        System.out.println("size = " + aList.size);
 
+/*
         System.out.println("remove the first one: " + aList.removeFirst());
         System.out.println("remove the first one: " + aList.removeFirst());
         System.out.println("remove the first one: " + aList.removeFirst());
         System.out.println("remove the last one: " + aList.removeLast());
+*/
 
         System.out.println("the 0th item: " + aList.get(0));
         System.out.println("the 1st item: " + aList.get(1));
