@@ -77,8 +77,8 @@ public class IntListTest {
         IntList n = null;
 
         assertEquals(exp,IntList.reverse(A));
-        assertEquals(null,n);
-        
+        assertEquals(null,IntList.reverse(n));
+
 
     }
 
