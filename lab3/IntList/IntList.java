@@ -80,13 +80,13 @@ public class IntList {
      * *  elements of B.  May modify items of A. Don't use 'new'.
      */
 
-    public static IntList dcatenate(IntList A, IntList B) {
+    /*public static IntList dcatenate(IntList A, IntList B) {
         // modify the IntList A
         IntList L = A;
-        if (A != null) {
-            while (L != null) {
+        if (A != null){
+            while (L != null){
                 L = L.rest;
-                if (L.rest == null) {
+                if (L.rest == null){
                     L.rest = B;
                     break;
                 }
@@ -95,13 +95,13 @@ public class IntList {
         }
         return B;
     }
+*/
 
-
-    public static IntList dcatenateRecursive(IntList A, IntList B) {
+    public static IntList dcatenate(IntList A, IntList B) {
         if (A == null) {
             return B;
         }
-        A.rest = dcatenateRecursive(A.rest, B);
+        A.rest = dcatenate(A.rest, B);
         return A;
     }
 
@@ -109,20 +109,20 @@ public class IntList {
      * Returns a list consisting of the elements of A followed by the
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
-    public static IntList catenate(IntList A, IntList B) {
+    /*public static IntList catenate(IntList A, IntList B) {
         // first use iteration
         IntList ret;
-        if (A == null) {
+        if (A == null){
             ret = B;
-        } else {
-            ret = new IntList(A.first, null);
+        }else{
+            ret = new IntList(A.first,null);
             IntList pRet = ret;
             // a pointer for the return List
             IntList pA = A;
             // a pointer to loop A
 
-            while (pA.rest != null) {
-                pRet.rest = new IntList(pA.rest.first, null);
+            while (pA.rest != null){
+                pRet.rest = new IntList(pA.rest.first,null);
                 pA = pA.rest;
                 pRet = pRet.rest;
             }
@@ -130,12 +130,14 @@ public class IntList {
         }
         return ret;
     }
+*/
 
-    public static IntList catenateRecursive(IntList A, IntList B) {
+
+    public static IntList catenate(IntList A, IntList B) {
         if (A == null) {
             return B;
         }
-        return new IntList(A.first, catenateRecursive(A.rest, B));
+        return new IntList(A.first, catenate(A.rest, B));
     }
 
 
