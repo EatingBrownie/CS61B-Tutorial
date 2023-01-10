@@ -80,7 +80,7 @@ public class IntList {
      * *  elements of B.  May modify items of A. Don't use 'new'.
      */
 
-    public static IntList dcatenate(IntList A, IntList B) {
+    /*public static IntList dcatenate(IntList A, IntList B) {
         // modify the IntList A
         IntList L = A;
         if (A != null){
@@ -95,13 +95,13 @@ public class IntList {
         }
         return B;
     }
+*/
 
-
-    public static IntList dcatenateRecursive(IntList A,IntList B){
+    public static IntList dcatenate(IntList A,IntList B){
         if (A == null){
             return B;
         }
-        A.rest = dcatenateRecursive(A.rest,B);
+        A.rest = dcatenate(A.rest,B);
         return A;
     }
 
@@ -109,7 +109,7 @@ public class IntList {
      * Returns a list consisting of the elements of A followed by the
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
-    public static IntList catenate(IntList A, IntList B) {
+    /*public static IntList catenate(IntList A, IntList B) {
         // first use iteration
         IntList ret;
         if (A == null){
@@ -130,12 +130,14 @@ public class IntList {
         }
         return ret;
     }
+*/
 
-    public static IntList catenateRecursive(IntList A,IntList B){
+
+    public static IntList catenate(IntList A,IntList B){
         if(A == null){
             return B;
         }
-        return new IntList(A.first,catenateRecursive(A.rest,B));
+        return new IntList(A.first,catenate(A.rest,B));
     }
 
 
@@ -148,7 +150,8 @@ public class IntList {
     public static IntList reverse(IntList A) {
         /*
          * That the function returns a reversed list.
-         * That the function is destructive, i.e. when it is done running, the list pointed to by A has been tampered with.
+         * That the function is destructive,
+         * i.e. when it is done running, the list pointed to by A has been tampered with.
          * You can use assertNotEquals. This is sort of a silly test.
          * That the method handles a null input properly.
          *
