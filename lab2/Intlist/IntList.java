@@ -96,13 +96,11 @@ public class IntList {
         return B;
     }
 
+
     public static IntList dcatenateRecursive(IntList A,IntList B){
-        if(A == null){
-            return B;
-        }
-        IntList L = new IntList(A.first,B);
-        A = A.rest;
-        return dcatenateRecursive(A,L);
+
+
+        return null;
     }
 
     /**
@@ -129,6 +127,14 @@ public class IntList {
             pRet.rest = B;
         }
         return ret;
+    }
+
+    public static IntList catenateRecursive(IntList A,IntList B){
+        if(A == null){
+            return B;
+        }
+
+        return new IntList(A.first,catenateRecursive(A.rest,B));
     }
 
 
