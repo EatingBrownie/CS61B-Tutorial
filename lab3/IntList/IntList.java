@@ -83,10 +83,10 @@ public class IntList {
     public static IntList dcatenate(IntList A, IntList B) {
         // modify the IntList A
         IntList L = A;
-        if (A != null){
-            while (L != null){
+        if (A != null) {
+            while (L != null) {
                 L = L.rest;
-                if (L.rest == null){
+                if (L.rest == null) {
                     L.rest = B;
                     break;
                 }
@@ -97,11 +97,11 @@ public class IntList {
     }
 
 
-    public static IntList dcatenateRecursive(IntList A, IntList B){
-        if (A == null){
+    public static IntList dcatenateRecursive(IntList A, IntList B) {
+        if (A == null) {
             return B;
         }
-        A.rest = dcatenateRecursive(A.rest,B);
+        A.rest = dcatenateRecursive(A.rest, B);
         return A;
     }
 
@@ -121,8 +121,8 @@ public class IntList {
             IntList pA = A;
             // a pointer to loop A
 
-            while (pA.rest != null){
-                pRet.rest = new IntList(pA.rest.first,null);
+            while (pA.rest != null) {
+                pRet.rest = new IntList(pA.rest.first, null);
                 pA = pA.rest;
                 pRet = pRet.rest;
             }
@@ -131,7 +131,7 @@ public class IntList {
         return ret;
     }
 
-    public static IntList catenateRecursive(IntList A, IntList B){
+    public static IntList catenateRecursive(IntList A, IntList B) {
         if(A == null){
             return B;
         }
@@ -148,7 +148,8 @@ public class IntList {
     public static IntList reverse(IntList A) {
         /*
          * That the function returns a reversed list.
-         * That the function is destructive, i.e. when it is done running, the list pointed to by A has been tampered with.
+         * That the function is destructive,
+         * i.e. when it is done running, the list pointed to by A has been tampered with.
          * You can use assertNotEquals. This is sort of a silly test.
          * That the method handles a null input properly.
          *
