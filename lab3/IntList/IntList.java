@@ -148,17 +148,10 @@ public class IntList {
      * as an input, returns null.
      */
     public static IntList reverse(IntList A) {
-        /*
-         * That the function returns a reversed list.
-         * That the function is destructive,
-         * i.e. when it is done running, the list pointed to by A has been tampered with.
-         * You can use assertNotEquals. This is sort of a silly test.
-         * That the method handles a null input properly.
-         *
-         * */
+        
+
 
         return null;
-
     }
 
 
