@@ -98,12 +98,10 @@ public class IntList {
 
 
     public static IntList dcatenateRecursive(IntList A,IntList B){
-        IntList L = A;
         if (A == null){
-            A = B;
-            return A;
+            return B;
         }
-        L.rest = dcatenateRecursive(L.rest,B);
+        A.rest = dcatenateRecursive(A.rest,B);
         return A;
     }
 
