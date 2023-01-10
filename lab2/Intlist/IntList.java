@@ -98,7 +98,10 @@ public class IntList {
 
 
     public static IntList dcatenateRecursive(IntList A,IntList B){
-
+        if (A == null){
+            return B;
+        }
+        
 
         return null;
     }
