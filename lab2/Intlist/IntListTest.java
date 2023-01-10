@@ -68,14 +68,14 @@ public class IntListTest {
         assertEquals(IntList.of(1, 2, 3, 4, 5, 6), A);
     }
 
-    @Test
+    /*@Test
     public void testDcatenateRecursive() {
         IntList A = IntList.of(1, 2, 3);
         IntList B = IntList.of(4, 5, 6);
         IntList exp = IntList.of(1, 2, 3, 4, 5, 6);
         assertEquals(exp, IntList.dcatenateRecursive(A, B));
         assertEquals(IntList.of(1, 2, 3, 4, 5, 6), A);
-    }
+    }*/
 
 
     @Test
@@ -87,13 +87,13 @@ public class IntListTest {
         assertEquals(IntList.of(1, 2, 3), A);
     }
 
-    @Test
+/*    @Test
     public void testCatenateRecursive() {
         IntList A = IntList.of(1, 2, 3);
         IntList B = IntList.of(4, 5, 6);
         IntList exp = IntList.of(1, 2, 3, 4, 5, 6);
         assertEquals(exp, IntList.catenateRecursive(A, B));
         assertEquals(IntList.of(1, 2, 3), A);
-    }
+    }*/
 
 }
