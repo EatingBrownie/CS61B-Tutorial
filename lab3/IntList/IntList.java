@@ -112,10 +112,10 @@ public class IntList {
     public static IntList catenate(IntList A, IntList B) {
         // first use iteration
         IntList ret;
-        if (A == null){
+        if (A == null) {
             ret = B;
-        }else{
-            ret = new IntList(A.first,null);
+        } else {
+            ret = new IntList(A.first, null);
             IntList pRet = ret;
             // a pointer for the return List
             IntList pA = A;
@@ -132,10 +132,10 @@ public class IntList {
     }
 
     public static IntList catenateRecursive(IntList A, IntList B) {
-        if(A == null){
+        if (A == null) {
             return B;
         }
-        return new IntList(A.first,catenateRecursive(A.rest,B));
+        return new IntList(A.first, catenateRecursive(A.rest, B));
     }
 
 
