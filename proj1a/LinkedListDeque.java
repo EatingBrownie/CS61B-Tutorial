@@ -180,32 +180,32 @@ public class LinkedListDeque<T> {
     }
 
 
-//    public static void main(String[] args) {
-//        LinkedListDeque<Integer> linkedListDeque = new LinkedListDeque<>();
-//        linkedListDeque.addFirst(3);
-//        linkedListDeque.addFirst(2);
-//        linkedListDeque.addFirst(1);
-//        linkedListDeque.addLast(4);
-//        System.out.println(linkedListDeque.size());
-//        linkedListDeque.printDeque();
-//
-//        System.out.println("--------------------------");
-//        linkedListDeque.removeLast();
-//        linkedListDeque.removeLast();
-//        linkedListDeque.removeFirst();
-//        linkedListDeque.removeLast();
-//        linkedListDeque.removeFirst();
-//        System.out.println(linkedListDeque.size());
-//        linkedListDeque.printDeque();
-//
-//        System.out.println("-------------------------------");
-//        linkedListDeque.addFirst(3);
-//        linkedListDeque.addFirst(2);
-//        linkedListDeque.addFirst(1);
-//        linkedListDeque.addLast(4);
-//        System.out.println(linkedListDeque.size());
-//        linkedListDeque.printDeque();
-//
-//    }
+/*    public static void main(String[] args) {
+        LinkedListDeque<Integer> linkedListDeque = new LinkedListDeque<>();
+        linkedListDeque.addFirst(3);
+        linkedListDeque.addFirst(2);
+        linkedListDeque.addFirst(1);
+        linkedListDeque.addLast(4);
+        System.out.println(linkedListDeque.size());
+        linkedListDeque.printDeque();
+
+        System.out.println("--------------------------");
+        linkedListDeque.removeLast();
+        linkedListDeque.removeLast();
+        linkedListDeque.removeFirst();
+        linkedListDeque.removeLast();
+        linkedListDeque.removeFirst();
+        System.out.println(linkedListDeque.size());
+        linkedListDeque.printDeque();
+
+        System.out.println("-------------------------------");
+        linkedListDeque.addFirst(3);
+        linkedListDeque.addFirst(2);
+        linkedListDeque.addFirst(1);
+        linkedListDeque.addLast(4);
+        System.out.println(linkedListDeque.size());
+        linkedListDeque.printDeque();
+
+    }*/
 
 }

@@ -173,7 +173,7 @@ public class ArrayDeque<Item> {
     }
 
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         ArrayDeque<String> aList = new ArrayDeque();
         aList.addLast("a");
         aList.addLast("b");
@@ -216,7 +216,7 @@ public class ArrayDeque<Item> {
 
 
     }
-
+*/
 
 }
 

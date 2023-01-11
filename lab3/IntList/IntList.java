@@ -148,10 +148,15 @@ public class IntList {
      * as an input, returns null.
      */
     public static IntList reverse(IntList A) {
-        
-
-
-        return null;
+        // destructive
+        if (A == null) {
+            return null;
+        }
+        IntList L = A;
+        while (L != null) {
+            L = L.rest;
+        }
+        return A;
     }
 
 
