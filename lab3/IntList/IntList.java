@@ -185,6 +185,7 @@ public class IntList {
         return A;
         */
 
+        IntList L = A.rest;
 
 
         return A;

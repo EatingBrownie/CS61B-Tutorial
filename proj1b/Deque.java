@@ -16,9 +16,6 @@ public interface Deque<Item>  {
 
     Item get(int index);
 
-    // LinkedListDeque();
-
     Item getRecursive(int index);
 
-    // ArrayDeque();
 }

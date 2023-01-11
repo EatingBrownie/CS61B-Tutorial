@@ -2,7 +2,7 @@
 
 import java.util.Iterator;
 
-public class LinkedListDeque<Item> {
+public class LinkedListDeque<Item> implements Deque<Item> {
 
     private int size;
     private IntNode sentinel;
