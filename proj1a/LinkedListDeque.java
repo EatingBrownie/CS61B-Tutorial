@@ -2,25 +2,25 @@
 
 import java.util.Iterator;
 
-public class LinkedListDeque<T> {
+public class LinkedListDeque<Item> {
 
     private int size;
     private IntNode sentinel;
     private IntNode p;
-    private T returnItem = (T)new Object();
+    private Item returnItem = (Item)new Object();
 
     public class IntNode {
         public IntNode prev;
-        public T item;
+        public Item item;
         public IntNode next;
-        public IntNode(IntNode p,T i, IntNode n) {
+        public IntNode(IntNode p,Item i, IntNode n) {
             prev = p;
             item = i;
             next = n;
         }
     }
 
-    private class DequeIterator implements Iterator<T>{
+    private class DequeIterator implements Iterator<Item>{
 
         private int wizPos;
         private LinkedListDeque linkedListDeque;
@@ -38,7 +38,7 @@ public class LinkedListDeque<T> {
         }
 
         @Override
-        public T next() {
+        public Item next() {
             wizPos += 1;
             p = p.next;
             return p.item;
@@ -70,12 +70,12 @@ public class LinkedListDeque<T> {
         size = 0;
 
         for (int i = 0; i < other.size(); i++) {
-            addLast((T)other.get(i));
+            addLast((Item)other.get(i));
             size += 1;
         }
     }
 
-    public T getRecursive(int index){
+    public Item getRecursive(int index){
         if (size() == 0){
             return null;
         }
@@ -91,7 +91,7 @@ public class LinkedListDeque<T> {
     }
 
 
-    public void addFirst(T item){
+    public void addFirst(Item item){
         size += 1;
         sentinel.next = new IntNode(sentinel,item,sentinel.next);
         // first add the new node in,
@@ -101,7 +101,7 @@ public class LinkedListDeque<T> {
         // the second one's prev should point to the new node
     }
 
-    public void addLast(T item){
+    public void addLast(Item item){
         size += 1;
         sentinel.prev = new IntNode(sentinel.prev,item,sentinel);
         // we only need to set the node point
@@ -137,7 +137,7 @@ public class LinkedListDeque<T> {
 
     /** Removes and returns the item at the front of the deque.
      If no such item exists, returns null.*/
-    public T removeFirst() {
+    public Item removeFirst() {
         size -= 1;
         sentinel.next = sentinel.next.next;
         sentinel.next.prev = sentinel;
@@ -153,7 +153,7 @@ public class LinkedListDeque<T> {
 
     /** Removes and returns the item at the back of the deque.
      If no such item exists, returns null. */
-    public T removeLast() {
+    public Item removeLast() {
         size -= 1;
         sentinel.prev = sentinel.prev.prev;
         sentinel.prev.next = sentinel;
@@ -167,7 +167,7 @@ public class LinkedListDeque<T> {
     /** Gets the item at the given index, where 0 is the front, 1 is the next item, and so forth.
      If no such item exists, returns null.
      Must not alter the deque! */
-    public T get(int index){
+    public Item get(int index){
         if (index <= size()){
             for (int i = 0; i <= index; i++) {
                 p = p.next;

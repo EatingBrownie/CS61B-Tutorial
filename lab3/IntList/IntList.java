@@ -152,8 +152,11 @@ public class IntList {
     public static IntList reverse(IntList A) {
         // destructive
         if (A == null) {
-            return null;
+            return A;
         }
+
+        /* destructive iteration
+
         IntList L = A;
         List<Integer> arr = new ArrayList<>();
         while (A != null){
@@ -165,6 +168,25 @@ public class IntList {
             L.first = arr.get(i);
             L = L.rest;
         }
+        return A;
+        */
+
+
+        /* non-destructive iteration
+
+        IntList p = A;
+        IntList L = new IntList(p.first, null);
+        p = p.rest;
+        while (p != null){
+            L = new IntList(p.first, L);
+            p = p.rest;
+        }
+        A = L;
+        return A;
+        */
+
+
+
         return A;
     }
 
