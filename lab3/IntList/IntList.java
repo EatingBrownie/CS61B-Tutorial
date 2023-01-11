@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Formatter;
+import java.util.List;
 
 /**
  * A naked recursive list of integers, similar to what we saw in lecture 3, but
@@ -11,11 +13,11 @@ public class IntList {
     /**
      * First element of list.
      */
-    public int first;
+    private int first;
     /**
      * Remaining elements of list.
      */
-    public IntList rest;
+    private IntList rest;
 
     /**
      * A List with first FIRST0 and rest REST0.
@@ -153,7 +155,14 @@ public class IntList {
             return null;
         }
         IntList L = A;
-        while (L != null) {
+        List<Integer> arr = new ArrayList<>();
+        while (A != null){
+            arr.add(A.first);
+            A = A.rest;
+        }
+        A = L;
+        for (int i = arr.size() - 1; i >= 0 ; i--) {
+            L.first = arr.get(i);
             L = L.rest;
         }
         return A;
