@@ -18,7 +18,7 @@ public class ArrayDeque<Item> {
     /** Creates an empty list. */
     public ArrayDeque() {
         size = 0;
-        items = (Item[])new Object [8];
+        items = (Item[]) new Object [8];
         nextFirst = 4;
         nextLast = 5;
     }
@@ -26,10 +26,12 @@ public class ArrayDeque<Item> {
     private class DequeIterator implements Iterator<Item> {
         private int wizPos;
         private int count;
-        public DequeIterator() {
-                wizPos = plusOne(nextFirst);
+        DequeIterator() {
+            wizPos = plusOne(nextFirst);
         }
-        public boolean hasNext() { return count < size; }
+        public boolean hasNext() {
+            return count < size;
+        }
         public Item next() {
             Item returnItem = items[wizPos];
             wizPos = plusOne(wizPos);
@@ -39,8 +41,8 @@ public class ArrayDeque<Item> {
     }
 
     /** Insert X into the front of the list.*/
-    public void addFirst(Item x){
-        if (size == items.length){
+    public void addFirst(Item x) {
+        if (size == items.length) {
             resize(size * 2);
         }
         items[nextFirst] = x;
@@ -73,7 +75,7 @@ public class ArrayDeque<Item> {
 
     public void printDeque(){
         DequeIterator dequeIterator = new DequeIterator();
-        while(dequeIterator.hasNext()){
+        while (dequeIterator.hasNext()){
             System.out.print(dequeIterator.next() + " ");
         }
         System.out.println();
@@ -86,7 +88,7 @@ public class ArrayDeque<Item> {
         Item x;
         int index;
 
-        if (needResize()){
+        if (needResize()) {
             resize(items.length / 2);
         }
         index = plusOne(nextFirst);
@@ -134,7 +136,7 @@ public class ArrayDeque<Item> {
         Item[] a = (Item[]) new Object[capacity];
         int temp = 0;
         DequeIterator dequeIterator = new DequeIterator();
-        while(dequeIterator.hasNext()){
+        while (dequeIterator.hasNext()) {
             a[temp] = dequeIterator.next();
             temp += 1;
         }
@@ -143,7 +145,7 @@ public class ArrayDeque<Item> {
         items = a;
     }
 
-    public boolean needResize(){
+    public boolean needResize() {
         // here, size should be renew (i.e. size - 1)
         usage = (double) (size) / items.length;
         return (usage < USAGE_FACTOR && items.length >= 16);
@@ -157,66 +159,21 @@ public class ArrayDeque<Item> {
 
 
     /** Use for nextFirst*/
-    int minusOne(int index){
-        if (index == 0){
+    int minusOne(int index) {
+        if (index == 0) {
             return items.length - 1;
         }
         return index - 1;
     }
 
     /** Use for nextLast*/
-    int plusOne(int index){
-        if (index == items.length - 1){
+    int plusOne(int index) {
+        if (index == items.length - 1) {
             return 0;
         }
         return index + 1;
     }
 
-
-    /*public static void main(String[] args) {
-        ArrayDeque<String> aList = new ArrayDeque();
-        aList.addLast("a");
-        aList.addLast("b");
-        aList.addLast("c");
-        aList.addFirst("d");
-        aList.addLast("e");
-        aList.addLast("f");
-        aList.addLast("g");
-        aList.addLast("h");
-        aList.addLast("i");
-        for (int i = 0; i < 20; i++) {
-            aList.addLast("j" + i);
-        }
-        System.out.println("----------insert completely-----------");
-        aList.printDeque();
-        System.out.println("size = " + aList.size());
-        System.out.println("aList.isEmpty() = " + aList.isEmpty());
-
-
-        for (int i = 0; i < 29; i++) {
-            aList.removeLast();
-        }
-        System.out.println("----------remove  completely-----------");
-        aList.printDeque();
-        System.out.println("size = " + aList.size());
-        System.out.println("aList.isEmpty() = " + aList.isEmpty());
-        System.out.println("the 1st item: " + aList.get(1));
-
-
-        System.out.println("----------continue to insert--------------");
-        for (int i = 0; i < 9; i++) {
-            aList.addLast("j" + i);
-        }
-
-        System.out.println("the 0th item: " + aList.get(0));
-        System.out.println("the 1st item: " + aList.get(1));
-        System.out.println("the last one: " + aList.getLast());
-        aList.printDeque();
-        System.out.println("aList.isEmpty() = " + aList.isEmpty());
-
-
-    }
-*/
 
 }
 
