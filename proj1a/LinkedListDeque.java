@@ -147,7 +147,6 @@ public class LinkedListDeque<T> {
         }
         returnItem = sentinel.next.item;
         size -= 1;
-        size();
         sentinel.next = sentinel.next.next;
         sentinel.next.prev = sentinel;
 
@@ -165,7 +164,6 @@ public class LinkedListDeque<T> {
         }
         returnItem = sentinel.prev.item;
         size -= 1;
-        size();
         sentinel.prev = sentinel.prev.prev;
         sentinel.prev.next = sentinel;
         return returnItem;

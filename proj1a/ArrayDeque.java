@@ -70,6 +70,10 @@ public class ArrayDeque<Item> {
 
     /** Returns the number of items in the list. */
     public int size() {
+        if (size < 0) {
+            size = 0;
+            return size;
+        }
         return size;
     }
 
