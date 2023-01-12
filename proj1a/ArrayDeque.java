@@ -53,7 +53,7 @@ public class ArrayDeque<Item> {
 
     /** Inserts X into the back of the list. */
     public void addLast(Item x) {
-        if (size == items.length){
+        if (size == items.length) {
             resize(size * 2);
         }
         items[nextLast] = x;
@@ -64,7 +64,7 @@ public class ArrayDeque<Item> {
     }
 
     /** use to check if it is empty*/
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return (size == 0);
     }
 
@@ -73,9 +73,9 @@ public class ArrayDeque<Item> {
         return size;
     }
 
-    public void printDeque(){
+    public void printDeque() {
         DequeIterator dequeIterator = new DequeIterator();
-        while (dequeIterator.hasNext()){
+        while (dequeIterator.hasNext()) {
             System.out.print(dequeIterator.next() + " ");
         }
         System.out.println();
@@ -106,7 +106,7 @@ public class ArrayDeque<Item> {
         Item x;
         int index;
 
-        if (needResize()){
+        if (needResize()) {
             resize(items.length / 2);
         }
         index = minusOne(nextLast);
