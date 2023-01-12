@@ -2,9 +2,9 @@
 
 import java.util.Iterator;
 
-public class ArrayDeque<Item> {
+public class ArrayDeque<T> {
     private int size;
-    private Item[] items;
+    private T[] items;
     // items contains the whole address
     private int nextFirst;
     // if use "addFirst", this is the index
@@ -18,12 +18,12 @@ public class ArrayDeque<Item> {
     /** Creates an empty list. */
     public ArrayDeque() {
         size = 0;
-        items = (Item[]) new Object [8];
+        items = (T[]) new Object [8];
         nextFirst = 4;
         nextLast = 5;
     }
 
-    private class DequeIterator implements Iterator<Item> {
+    private class DequeIterator implements Iterator<T> {
         private int wizPos;
         private int count;
         DequeIterator() {
@@ -32,8 +32,8 @@ public class ArrayDeque<Item> {
         public boolean hasNext() {
             return count < size;
         }
-        public Item next() {
-            Item returnItem = items[wizPos];
+        public T next() {
+            T returnItem = items[wizPos];
             wizPos = plusOne(wizPos);
             count += 1;
             return returnItem;
@@ -41,7 +41,7 @@ public class ArrayDeque<Item> {
     }
 
     /** Insert X into the front of the list.*/
-    public void addFirst(Item x) {
+    public void addFirst(T x) {
         if (size == items.length) {
             resize(size * 2);
         }
@@ -52,7 +52,7 @@ public class ArrayDeque<Item> {
     }
 
     /** Inserts X into the back of the list. */
-    public void addLast(Item x) {
+    public void addLast(T x) {
         if (size == items.length) {
             resize(size * 2);
         }
@@ -87,9 +87,9 @@ public class ArrayDeque<Item> {
 
     /** Deletes item from front of the list and
      * returns deleted item. */
-    public Item removeFirst() {
+    public T removeFirst() {
         // removeFirst, if we have already addFirst
-        Item x;
+        T x;
         int index;
 
         if (needResize()) {
@@ -106,8 +106,8 @@ public class ArrayDeque<Item> {
 
     /** Deletes item from back of the list and
      * returns deleted item. */
-    public Item removeLast() {
-        Item x;
+    public T removeLast() {
+        T x;
         int index;
 
         if (needResize()) {
@@ -123,9 +123,9 @@ public class ArrayDeque<Item> {
     }
 
     /** Gets the ith item in the list (0 is the front). */
-    public Item get(int i) {
+    public T get(int i) {
         DequeIterator dequeIterator = new DequeIterator();
-        Item x = null;
+        T x = null;
         for (int j = 0; j <= i; j++) {
             x = dequeIterator.next();
         }
@@ -137,7 +137,7 @@ public class ArrayDeque<Item> {
     private void resize(int capacity) {
         // whether longer or shorter, judge from outside
         // then renew nextFirst and nextLast
-        Item[] a = (Item[]) new Object[capacity];
+        T[] a = (T[]) new Object[capacity];
         int temp = 0;
         DequeIterator dequeIterator = new DequeIterator();
         while (dequeIterator.hasNext()) {
@@ -157,7 +157,7 @@ public class ArrayDeque<Item> {
 
 
     /** Returns the item from the back of the list. */
-    public Item getLast() {
+    public T getLast() {
         return items[ minusOne(nextLast) ];
     }
 
