@@ -2,25 +2,25 @@
 
 import java.util.Iterator;
 
-public class LinkedListDeque<Item> {
+public class LinkedListDeque<T> {
 
     private int size;
     private IntNode sentinel;
     private IntNode p;
-    private Item returnItem = (Item) new Object();
+    private T returnItem = (T) new Object();
 
     public class IntNode {
         private IntNode prev;
-        private Item item;
+        private T item;
         private IntNode next;
-        public IntNode(IntNode p, Item i, IntNode n) {
+        public IntNode(IntNode p, T i, IntNode n) {
             prev = p;
             item = i;
             next = n;
         }
     }
 
-    private class DequeIterator implements Iterator<Item> {
+    private class DequeIterator implements Iterator<T> {
 
         private int wizPos;
         private LinkedListDeque linkedListDeque;
@@ -38,7 +38,7 @@ public class LinkedListDeque<Item> {
         }
 
         @Override
-        public Item next() {
+        public T next() {
             wizPos += 1;
             p = p.next;
             return p.item;
@@ -70,12 +70,12 @@ public class LinkedListDeque<Item> {
         size = 0;
 
         for (int i = 0; i < other.size(); i++) {
-            addLast((Item) other.get(i));
+            addLast((T) other.get(i));
             size += 1;
         }
     }
 
-    public Item getRecursive(int index) {
+    public T getRecursive(int index) {
         if (size() == 0) {
             return null;
         }
@@ -91,7 +91,7 @@ public class LinkedListDeque<Item> {
     }
 
 
-    public void addFirst(Item item) {
+    public void addFirst(T item) {
         size += 1;
         sentinel.next = new IntNode(sentinel, item, sentinel.next);
         // first add the new node in,
@@ -101,7 +101,7 @@ public class LinkedListDeque<Item> {
         // the second one's prev should point to the new node
     }
 
-    public void addLast(Item item) {
+    public void addLast(T item) {
         size += 1;
         sentinel.prev = new IntNode(sentinel.prev, item, sentinel);
         // we only need to set the node point
@@ -141,12 +141,13 @@ public class LinkedListDeque<Item> {
 
     /** Removes and returns the item at the front of the deque.
      If no such item exists, returns null.*/
-    public Item removeFirst() {
+    public T removeFirst() {
         if (size() == 0) {
             return null;
         }
         returnItem = sentinel.next.item;
         size -= 1;
+        size();
         sentinel.next = sentinel.next.next;
         sentinel.next.prev = sentinel;
 
@@ -158,12 +159,13 @@ public class LinkedListDeque<Item> {
 
     /** Removes and returns the item at the back of the deque.
      If no such item exists, returns null. */
-    public Item removeLast() {
+    public T removeLast() {
         if (size() == 0) {
             return null;
         }
         returnItem = sentinel.prev.item;
         size -= 1;
+        size();
         sentinel.prev = sentinel.prev.prev;
         sentinel.prev.next = sentinel;
         return returnItem;
@@ -173,7 +175,7 @@ public class LinkedListDeque<Item> {
     /** Gets the item at the given index, where 0 is the front, 1 is the next item, and so forth.
      If no such item exists, returns null.
      Must not alter the deque! */
-    public Item get(int index) {
+    public T get(int index) {
         if (index <= size()) {
             for (int i = 0; i <= index; i++) {
                 p = p.next;
@@ -184,6 +186,8 @@ public class LinkedListDeque<Item> {
         }
         return null;
     }
+
+
 
 
 }
