@@ -162,7 +162,7 @@ public class LinkedListDeque<Item> {
         if (size() == 0){
             return null;
         }
-        returnItem = sentinel.next.item;
+        returnItem = sentinel.prev.item;
         size -= 1;
         sentinel.prev = sentinel.prev.prev;
         sentinel.prev.next = sentinel;
