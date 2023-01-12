@@ -9,7 +9,7 @@ public class TestArrayDequeGold {
     *
     * */
     @Test
-    public void test01(){
+    public void testAddAndRemove(){
         StudentArrayDeque<Integer> sad1 = new StudentArrayDeque<>();
         ArrayDequeSolution<Integer> ads1 = new ArrayDequeSolution<>();
 
@@ -37,10 +37,41 @@ public class TestArrayDequeGold {
                     expected, actual);
         }
 
-
-
-
     }
+
+
+    @Test
+    public void testGet(){
+
+        StudentArrayDeque<Integer> sad1 = new StudentArrayDeque<>();
+        ArrayDequeSolution<Integer> ads1 = new ArrayDequeSolution<>();
+
+        String operation = "\n";
+
+        for (int i = 0; i < 20; i += 1) {
+            double numberBetweenZeroAndOne = StdRandom.uniform();
+
+            if (numberBetweenZeroAndOne < 0.5) {
+                sad1.addLast(i);
+                ads1.addLast(i);
+                operation += "addLast(" + i + ") \n";
+            } else {
+                sad1.addFirst(i);
+                ads1.addFirst(i);
+                operation += "addFirst(" + i + ") \n";
+            }
+        }
+
+        for (int i = 0; i < 20; i++) {
+            Integer numberBetweenZeroAndNine = StdRandom.uniform(10);
+            Integer expected = ads1.get(numberBetweenZeroAndNine);
+            Integer actual = sad1.get(numberBetweenZeroAndNine);
+            operation += "get(" + numberBetweenZeroAndNine + ") \n";
+            assertEquals(operation,
+                    expected, actual);
+        }
+    }
+
 
 
 }
