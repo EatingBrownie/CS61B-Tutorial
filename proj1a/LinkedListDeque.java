@@ -9,11 +9,11 @@ public class LinkedListDeque<T> {
     private IntNode p;
     private T returnItem = (T) new Object();
 
-    public class IntNode {
+    private class IntNode {
         private IntNode prev;
         private T item;
         private IntNode next;
-        public IntNode(IntNode p, T i, IntNode n) {
+        private IntNode(IntNode p, T i, IntNode n) {
             prev = p;
             item = i;
             next = n;
@@ -59,9 +59,9 @@ public class LinkedListDeque<T> {
         size = 0;
     }
 
-    /** Creates a deep copy of other
+/*    *//** Creates a deep copy of other
      Creating a deep copy means that you create an entirely new LinkedListDeque,
-     with the exact same items as other */
+     with the exact same items as other *//*
     public LinkedListDeque(LinkedListDeque other) {
         sentinel = new IntNode(null, null, null);
         sentinel.prev = sentinel;
@@ -73,7 +73,7 @@ public class LinkedListDeque<T> {
             addLast((T) other.get(i));
             size += 1;
         }
-    }
+    }*/
 
     public T getRecursive(int index) {
         if (size() == 0) {

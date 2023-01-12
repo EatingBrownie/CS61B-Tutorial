@@ -149,21 +149,15 @@ public class ArrayDeque<T> {
         items = a;
     }
 
-    public boolean needResize() {
+    private boolean needResize() {
         // here, size should be renew (i.e. size - 1)
         usage = (double) (size) / items.length;
         return (usage < USAGE_FACTOR && items.length >= 16);
     }
 
 
-    /** Returns the item from the back of the list. */
-    public T getLast() {
-        return items[ minusOne(nextLast) ];
-    }
-
-
     /** Use for nextFirst*/
-    int minusOne(int index) {
+    private int minusOne(int index) {
         if (index == 0) {
             return items.length - 1;
         }
@@ -171,7 +165,7 @@ public class ArrayDeque<T> {
     }
 
     /** Use for nextLast*/
-    int plusOne(int index) {
+    private int plusOne(int index) {
         if (index == items.length - 1) {
             return 0;
         }
