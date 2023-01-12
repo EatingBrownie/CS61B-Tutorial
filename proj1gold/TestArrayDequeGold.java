@@ -33,7 +33,6 @@ public class TestArrayDequeGold {
             Integer expected = ads1.removeLast();
             Integer actual = sad1.removeLast();
             operation += "removeLast() \n";
-//            System.out.println(operation);
             assertEquals(operation,
                     expected, actual);
         }
