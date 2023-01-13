@@ -10,12 +10,21 @@ public class TestOffByOne {
     // Your tests go here.
 
     @Test
-    public void testEqualChars(){
-        assertFalse(offByOne.equalChars('z','a'));
-        assertFalse(offByOne.equalChars('a','a'));
-        assertFalse(offByOne.equalChars('a','e'));
-        assertTrue(offByOne.equalChars('a','b'));
-        assertTrue(offByOne.equalChars('r','q'));
-        assertTrue(offByOne.equalChars('&','%'));
+    public void testEqualChars() {
+        assertFalse(offByOne.equalChars('z', 'a'));
+        assertFalse(offByOne.equalChars('a', 'a'));
+        assertFalse(offByOne.equalChars('a', 'e'));
+        assertTrue(offByOne.equalChars('a', 'b'));
+        assertTrue(offByOne.equalChars('a', 'B'));
+        assertTrue(offByOne.equalChars('r', 'q'));
+        assertTrue(offByOne.equalChars('&', '%'));
     }
+
+
+    @Test
+    public void testPrint(){
+        int diff = 'B' - 'a';
+        System.out.println(diff);
+    }
+
 }

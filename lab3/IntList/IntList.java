@@ -161,7 +161,7 @@ public class IntList {
         }
         return reverse(L);*/
 
-         //destructive iteration
+        // destructive iteration
 
         IntList L = A;
         List<Integer> arr = new ArrayList<>();

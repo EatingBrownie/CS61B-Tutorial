@@ -45,7 +45,7 @@ public class Palindrome {
             actual += deque.removeLast();
         }
         for (int i = 0; i < word.length(); i++) {
-            if (!cc.equalChars(actual.charAt(i), word.charAt(i))){
+            if (!cc.equalChars(actual.charAt(i), word.charAt(i))) {
                 if (!(odd && i == word.length() / 2)) {
                     return false;
                 }
@@ -60,7 +60,7 @@ public class Palindrome {
         String actual = "";
 
         for (int i = 0; i < deque.size(); i++) {
-            actual += deque.removeFirst();
+            actual += deque.get(i);
         }
 
         return actual;

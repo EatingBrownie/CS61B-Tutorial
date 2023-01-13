@@ -5,11 +5,9 @@ public class OffByN implements CharacterComparator {
         this.size = size;
     }
 
-    public OffByN() {
-    }
 
     @Override
     public boolean equalChars(char x, char y) {
-        return ((x + size) == y) ||((x - size) == y);
+        return ((x + size) == y) || ((x - size) == y);
     }
 }
