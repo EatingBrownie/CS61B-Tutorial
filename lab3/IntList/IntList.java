@@ -151,11 +151,17 @@ public class IntList {
      */
     public static IntList reverse(IntList A) {
         // destructive
-        if (A == null) {
-            return A;
+        /*if (A == null) {
+            return null;
         }
+        IntList L = A;
+        while (A != null) {
+            L = new IntList(A.first, L);
+            A = A.rest;
+        }
+        return reverse(L);*/
 
-        /* destructive iteration
+         //destructive iteration
 
         IntList L = A;
         List<Integer> arr = new ArrayList<>();
@@ -169,7 +175,7 @@ public class IntList {
             L = L.rest;
         }
         return A;
-        */
+
 
 
         /* non-destructive iteration
@@ -185,10 +191,6 @@ public class IntList {
         return A;
         */
 
-        IntList L = A.rest;
-
-
-        return A;
     }
 
 

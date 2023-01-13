@@ -9,11 +9,11 @@ public class LinkedListDeque<Item> implements Deque<Item> {
     private IntNode p;
     private Item returnItem = (Item) new Object();
 
-    public class IntNode {
-        public IntNode prev;
-        public Item item;
-        public IntNode next;
-        public IntNode(IntNode p, Item i, IntNode n) {
+    private class IntNode {
+        private IntNode prev;
+        private Item item;
+        private IntNode next;
+        private IntNode(IntNode p, Item i, IntNode n) {
             prev = p;
             item = i;
             next = n;
@@ -26,7 +26,7 @@ public class LinkedListDeque<Item> implements Deque<Item> {
         private LinkedListDeque linkedListDeque;
         private IntNode p;
 
-        public DequeIterator(LinkedListDeque linkedListDeque) {
+        DequeIterator(LinkedListDeque linkedListDeque) {
             wizPos = 0;
             this.linkedListDeque = linkedListDeque;
             p = linkedListDeque.sentinel;
@@ -46,9 +46,9 @@ public class LinkedListDeque<Item> implements Deque<Item> {
     }
 
     /** Creates an empty linked list deque. */
-    public LinkedListDeque(){
+    public LinkedListDeque() {
         //T a = (T)  new Object ();
-        sentinel = new IntNode(null, null,null);
+        sentinel = new IntNode(null, null, null);
 
         sentinel.prev = sentinel;
         sentinel.next = sentinel;
@@ -59,9 +59,9 @@ public class LinkedListDeque<Item> implements Deque<Item> {
         size = 0;
     }
 
-    /** Creates a deep copy of other
+/*    *//** Creates a deep copy of other
      Creating a deep copy means that you create an entirely new LinkedListDeque,
-     with the exact same items as other */
+     with the exact same items as other *//*
     public LinkedListDeque(LinkedListDeque other) {
         sentinel = new IntNode(null, null, null);
         sentinel.prev = sentinel;
@@ -70,16 +70,16 @@ public class LinkedListDeque<Item> implements Deque<Item> {
         size = 0;
 
         for (int i = 0; i < other.size(); i++) {
-            addLast((Item) other.get(i));
+            addLast((T) other.get(i));
             size += 1;
         }
-    }
+    }*/
 
-    public Item getRecursive(int index){
+    public Item getRecursive(int index) {
         if (size() == 0) {
             return null;
         }
-        if (index == 0){
+        if (index == 0) {
             returnItem = p.next.item;
             p = sentinel;
             return returnItem;
@@ -103,7 +103,7 @@ public class LinkedListDeque<Item> implements Deque<Item> {
 
     public void addLast(Item item) {
         size += 1;
-        sentinel.prev = new IntNode(sentinel.prev, item,sentinel);
+        sentinel.prev = new IntNode(sentinel.prev, item, sentinel);
         // we only need to set the node point
         // sentinel node, next points to the same reference
         // then, the prev needs to be changed
@@ -132,7 +132,7 @@ public class LinkedListDeque<Item> implements Deque<Item> {
      Once all the items have been printed, print out a new line.*/
     public void printDeque() {
         DequeIterator dequeIterator = new DequeIterator(this);
-        while (dequeIterator.hasNext()){
+        while (dequeIterator.hasNext()) {
             System.out.print(dequeIterator.next() + " ");
         }
         System.out.println();
@@ -159,7 +159,7 @@ public class LinkedListDeque<Item> implements Deque<Item> {
     /** Removes and returns the item at the back of the deque.
      If no such item exists, returns null. */
     public Item removeLast() {
-        if (size() == 0){
+        if (size() == 0) {
             return null;
         }
         returnItem = sentinel.prev.item;
@@ -173,8 +173,8 @@ public class LinkedListDeque<Item> implements Deque<Item> {
     /** Gets the item at the given index, where 0 is the front, 1 is the next item, and so forth.
      If no such item exists, returns null.
      Must not alter the deque! */
-    public Item get(int index){
-        if (index <= size()){
+    public Item get(int index) {
+        if (index <= size()) {
             for (int i = 0; i <= index; i++) {
                 p = p.next;
             }
@@ -184,6 +184,8 @@ public class LinkedListDeque<Item> implements Deque<Item> {
         }
         return null;
     }
+
+
 
 
 }
