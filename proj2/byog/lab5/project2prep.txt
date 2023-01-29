@@ -2,7 +2,7 @@ Q: Can you think of an analogy between the process of tesselating hexagons and r
 What is the hexagon and what is the tesselation on the project 2 side?
 
 A:镶嵌六边形的过程，与使用房间和走廊随机生成的世界的类比
-什么是六边形，什么是项目2 的镶嵌
+什么是六边形，什么是项目2的镶嵌
 
 -----
 Q: If you were to start working on world generation, what kind of method would you think of writing first? 

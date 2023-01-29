@@ -12,9 +12,9 @@ public abstract class AbstractBoundedQueue<T> implements BoundedQueue<T> {
         return fillCount;
     }
 
-    public abstract boolean isEmpty();
+    /*public abstract boolean isEmpty();
 
-    public abstract boolean isFull();
+    public abstract boolean isFull();*/
 
     public abstract T peek();
     public abstract T dequeue();
